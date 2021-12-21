@@ -17,12 +17,13 @@ const createNote =  async (newNote) => {
     })
 
     await noteToAdd.save()
+    cosole.log(noteToAdd._id)
     return "Note added successfully"
    
 }
 
 const deleteNote = async (id) => {
-    
+
      await notesSchema.findByIdAndDelete(id)
      return "Note deleted successfully"
      
