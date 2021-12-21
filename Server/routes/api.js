@@ -26,6 +26,14 @@ router.route('/:id').delete(async (req , resp)=> {
     return resp.json(deleteFromDB);
 })
 
+//Update Note
+router.route('/:id').put(async (req, resp) => {
+    var updatedNote = req.body;
+    var id = req.params.id;
+    var answer = await notesBL.updateNote(id , updatedNote);
+    return resp.json(answer);
+})
+
 module.exports = router;
 
 

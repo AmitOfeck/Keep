@@ -9,7 +9,7 @@ const getAllNotes =  async () => {
 const createNote =  async (newNote) => {
 
     const noteToAdd = new notesSchema({
-        Id: newNote.Id ,
+        UserId: newNote.UserId ,
         Title : newNote.Title ,
         Body : newNote.Body ,
         Tags : newNote.Tags , 
@@ -17,8 +17,24 @@ const createNote =  async (newNote) => {
     })
 
     await noteToAdd.save()
-    cosole.log(noteToAdd._id)
-    return "Note added successfully"
+    return noteToAdd._id
+   
+}
+
+const updateNote =  async ( id , updatedNote) => {
+
+    const noteToUpdate = new notesSchema({
+
+        _id : id ,
+        UserId: updatedNote.UserId ,
+        Title : updatedNote.Title ,
+        Body : updatedNote.Body ,
+        Tags : updatedNote.Tags , 
+        createdDate : updatedNote.createdDate
+    })
+
+    await notesSchema.findByIdAndUpdate(id , noteToUpdate)
+    return noteToUpdate._id
    
 }
 
@@ -29,4 +45,4 @@ const deleteNote = async (id) => {
      
  }
 
-module.exports = {getAllNotes , createNote , deleteNote};
+module.exports = {getAllNotes , createNote , deleteNote , updateNote};

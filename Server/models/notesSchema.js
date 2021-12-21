@@ -2,11 +2,11 @@ var mongoose = require('mongoose')
 
 var notesSchema = new mongoose.Schema({
 
-  Id: Number ,
+  UserId: Number ,
   Title : String ,
   Body : String ,
   Tags : [String] , 
-  createdDate : Date 
+  createdDate : Date ,
   
 } , {versionKey: false})
 
