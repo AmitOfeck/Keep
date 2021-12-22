@@ -44,7 +44,7 @@
 
 #navBar{
   display: grid;
-  grid-template-columns: 10% 50% 30% 5% 10vh;
+  grid-template-columns: 10% 50% 30% 5% 5%;
 }
 
 #plus{
@@ -88,6 +88,13 @@
 #add{
   display: grid;
   grid-template-columns:30% 40% 30%;
+}
+
+#tagsNav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
 }
 
 

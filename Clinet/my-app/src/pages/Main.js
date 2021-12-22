@@ -11,16 +11,19 @@ function Main(props) {
     const navigate = useNavigate();
 
     const [notes , setNotes] = useState([])
+    const [filterNotes , setFilterNotes] = useState([])
     const [change , setChange] = useState(false)
 
     useEffect(async () => {
         var answer = await Utils.listNotes(params.id)
         setNotes(answer)
+        setFilterNotes(answer)
     } ,[])
 
     useEffect(async () => {
         var answer = await Utils.listNotes(params.id)
         setNotes(answer)
+        setFilterNotes(answer)
     } ,[change])
 
     const changeFunc = () => {
@@ -28,7 +31,8 @@ function Main(props) {
     }
 
 
-    var stickyNotes = notes.map((note , index) => {
+
+    var stickyNotes = filterNotes.map((note , index) => {
         return(<Note key={index} data={note} callback={changeFunc}/>)
     })
 

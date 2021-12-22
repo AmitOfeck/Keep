@@ -14,6 +14,25 @@ function Nav(props) {
     const [tag , setTag] = useState("")
     const [tagsArr , setTagsArr] = useState([])
 
+    const push = () => {
+        var arr = [...tagsArr]
+        arr.push(tag)
+        setTagsArr(arr)
+        setTag("")
+    }
+
+    const deleteTag = (tagName) => {
+        var arr = tagsArr.filter((exist) => exist != tagName)
+        setTagsArr(arr)   
+    }
+
+    var floatHashtags = tagsArr.map((tag , index) => {
+        return(<div>
+             <button key={index} value={tag} type="button" class="btn btn-primary" onClick={(e) => deleteTag(e.target.value)}> #{tag}</button> &nbsp;
+             </div>)
+    })
+
+
 
     return (
         <div >
@@ -25,12 +44,14 @@ function Nav(props) {
                     </a>
                  </div>
 
-                 <div></div>
+                 <div id="tagsNav">
+                 {floatHashtags}
+                 </div>
 
                  <div class="container-fluid">
                       <form class="d-flex">
-                      <input class="form-control me-2" type="search" placeholder="Serach Tag" aria-label="Search" onChange={(e)=> setTag(e.target.value)} />
-                      <button type="button" class="btn btn-outline-primary" >Tag</button> &nbsp;
+                      <input class="form-control me-2" value={tag} type="search" placeholder="Serach Tag" aria-label="Search" onChange={(e)=> setTag(e.target.value)} />
+                      <button type="button" class="btn btn-outline-primary" onClick={() => push()}>Tag</button> &nbsp;
                       <button class="btn btn-outline-success" >Search</button>
                       </form>
                  </div>
