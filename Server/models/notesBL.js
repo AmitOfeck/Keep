@@ -2,24 +2,19 @@ var notesSchema = require('./notesSchema')
 
 
 const getAllNotes =  async () => {
-    var data = await notesSchema.find()
-    return data
+    return await notesSchema.find()
 }
 
 const listNotes =  async (id) => {
-    var data = await notesSchema.find({UserId: id})
-    // console.log(data)
-    return data
+    return await notesSchema.find({UserId: id})
 }
 
 const noteByNoteId =  async (noteId) => {
-    var data = await notesSchema.find({_id: noteId})
-    return data
+    return await notesSchema.find({_id: noteId})
 }
 
 const getNotesByTags =  async (id , tags) => {
-    var data = await notesSchema.find({ UserId: id , Tags : {$in : tags} })
-    return data
+    return await notesSchema.find({ UserId: id , Tags : {$in : tags} })
 }
 
 const createNote =  async ( id , newNote) => {
