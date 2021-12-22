@@ -5,6 +5,11 @@ const listNotes = async (id) => {
     return resp.data
 }
 
+const serachByTag = async (userId , tagsString) => {
+    var resp = await axios.get("http://localhost:8000/notes/tags/"+userId+"/"+tagsString)
+    return resp.data
+}
+
 const addNote = async (id , note) => {
     var resp = await axios.post("http://localhost:8000/notes/"+id , note)
     return resp.data
@@ -26,4 +31,4 @@ const updateNote = async (userId , NoteId , updatedNoteObj) => {
 }
 
 
-export default {listNotes , addNote , deleteNote , noteByNoteId , updateNote}
+export default {listNotes , addNote , deleteNote , noteByNoteId , updateNote , serachByTag}

@@ -32,6 +32,10 @@ function Nav(props) {
              </div>)
     })
 
+    const search = () => {
+        props.search(tagsArr)
+    }
+
 
 
     return (
@@ -52,7 +56,7 @@ function Nav(props) {
                       <form class="d-flex">
                       <input class="form-control me-2" value={tag} type="search" placeholder="Serach Tag" aria-label="Search" onChange={(e)=> setTag(e.target.value)} />
                       <button type="button" class="btn btn-outline-primary" onClick={() => push()}>Tag</button> &nbsp;
-                      <button class="btn btn-outline-success" >Search</button>
+                      <button type="button" class="btn btn-outline-success" onClick={search}>Serach</button>
                       </form>
                  </div>
                  <button type="button" class="btn btn-outline-light" id="plus" onClick={() => navigate ('/'+params.id+'/addNote')}>+</button> 

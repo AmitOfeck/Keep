@@ -30,18 +30,29 @@ function Main(props) {
         setChange(!change)
     }
 
-
-
     var stickyNotes = filterNotes.map((note , index) => {
         return(<Note key={index} data={note} callback={changeFunc}/>)
     })
 
-    
+    const searchTags = async (tagsArr) => {
+       const foo = tagsArr.join(',')
+       console.log(foo)
+       if (foo == "")
+       {
+        setFilterNotes(notes)
+       }
+       else
+       {
+        var answer = await Utils.serachByTag(params.id , foo)
+        setFilterNotes(answer)
+       }
+      
+    }
 
     return (
         <div>
 
-          <Nav/>
+          <Nav search={searchTags}/>
           <br/>
 
           <div id="orderNotes">
