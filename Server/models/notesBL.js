@@ -8,15 +8,17 @@ const getAllNotes =  async () => {
 
 const listNotes =  async (id) => {
     var data = await notesSchema.find({UserId: id})
+    // console.log(data)
     return data
 }
 
 const getNotesByTags =  async (id , tags) => {
-    var data = await notesSchema.find({ UserId: id , Tags : tags })
+    var data = await notesSchema.find({ UserId: id , Tags : {$in : tags} })
     return data
 }
 
 const createNote =  async ( id , newNote) => {
+    // console.log(newNote)
 
     const noteToAdd = new notesSchema({
         UserId: id ,
@@ -25,6 +27,7 @@ const createNote =  async ( id , newNote) => {
         Tags : newNote.Tags , 
         createdDate : newNote.createdDate
     })
+    // console.log(noteToAdd)
 
     await noteToAdd.save()
     return noteToAdd._id
