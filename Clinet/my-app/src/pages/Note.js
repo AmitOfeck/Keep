@@ -45,11 +45,20 @@ function Note(props) {
         const oneDay = 1000 * 60 * 60 * 24;
         const diffInTime = date2.getTime() - date1.getTime();
         const diffInDays = Math.round(diffInTime / oneDay);
-        console.log(diffInDays);
+        return(diffInDays);
      }
 
-     const priority = checkTimeDifference(checkDate(props.data.createdDate) , today)
-
+     var classTime = "";
+     const num = checkTimeDifference(checkDate(props.data.createdDate) , today)
+     console.log(num)
+     if (num < 7)
+     classTime = "greenNote";
+     else if (num > 7 && num <= 30)
+     classTime = "yellowNote";
+     else
+     {
+        classTime = "redNote";
+     }
 
      var tagsIcons = props.data.Tags.map((tag , index) => {
          return ( <button key={index} type="button" class="btn btn-outline-secondary btn-sm">#{tag}</button> )
@@ -63,18 +72,18 @@ function Note(props) {
 
 
     return (
-        <div id="note">
+        <div id="note" >
 
             <div></div>
-            <div class="card mb-3" >
-                <div class="row g-0">
+            <div class="card mb-3"  class={classTime}>
+                <div class="row g-0" >
                 <div class="col-md-4">
                     <div >
                    
                         <img src={deleteIcon} width="20px" height="20px" onClick ={ () => del(props.data.UserId , props.data._id)}></img>  &nbsp;&nbsp;
                         <img src={editIcon} width="18px" height="18px" onClick={() => navigate ('/'+params.id+'/Edit/'+props.data._id)}></img>
                     </div>
-  
+                    <br/>
                     {tagsIcons}
 
 

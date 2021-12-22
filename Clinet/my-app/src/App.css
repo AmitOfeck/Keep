@@ -94,7 +94,18 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
 
+.greenNote{
+  background-color:rgb(155, 179, 155);
+}
+
+.yellowNote{
+  background-color:rgb(235, 235, 144);
+}
+
+.redNote{
+  background-color:rgb(230, 176, 176);
 }
 
 
