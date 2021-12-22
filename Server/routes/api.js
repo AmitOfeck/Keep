@@ -17,11 +17,11 @@ router.route('/:id').get(async (req, resp) => {
 })
 
 //Get Notes By Note ID
-// router.route('/:id').get(async (req, resp) => {
-//     const id = req.params.id;
-//     const data = await notesBL.listNotes(id);
-//     return resp.json(data);
-// })
+router.route('/:id/:noteId').get(async (req, resp) => {
+    const noteId = req.params.noteId;
+    const data = await notesBL.noteByNoteId(noteId);
+    return resp.json(data);
+})
 
 //Get Notes By Tags 
 router.route('/tags/:id/:tags').get(async (req, resp) => {

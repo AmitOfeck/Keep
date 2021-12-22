@@ -12,6 +12,11 @@ const listNotes =  async (id) => {
     return data
 }
 
+const noteByNoteId =  async (noteId) => {
+    var data = await notesSchema.find({_id: noteId})
+    return data
+}
+
 const getNotesByTags =  async (id , tags) => {
     var data = await notesSchema.find({ UserId: id , Tags : {$in : tags} })
     return data
@@ -58,4 +63,4 @@ const deleteNote = async (noteID) => {
      
  }
 
-module.exports = {getAllNotes , listNotes , getNotesByTags , createNote , deleteNote , updateNote};
+module.exports = {getAllNotes , listNotes , getNotesByTags , createNote , deleteNote , updateNote , noteByNoteId};

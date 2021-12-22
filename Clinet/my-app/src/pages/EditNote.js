@@ -25,9 +25,33 @@ function EditNote(props) {
     const [tag , setTag] = useState("")
 
     useEffect(async () => {
-        // var answer = await Utils.listNotes(params.id)
-        // setNotes(answer)
+        var answer = await Utils.noteByNoteId(params.id , params.noteId)
+        setNote(answer[0])
     } ,[])
+
+    const deleteTag = (tagName) => {
+        var arr = note.Tags.filter((exist) => exist != tagName)
+        setNote({...note , Tags : arr})   
+    }
+
+    var floatHashtags = note.Tags.map((tag , index) => {
+        return(<div>
+             <button key={index} value={tag} type="button" class="btn btn-outline-secondary btn-sm" onClick={(e) => deleteTag(e.target.value)}> #{tag}</button> 
+             </div>)
+    })
+
+    const update = async () => {
+        if(note.Title == "" || note.Body == "" || note.Tags.length == 0)
+        {
+            alert("Mission information")
+        }
+        else
+        {
+           var answer = await Utils.updateNote(params.id ,note._id ,  note)
+           console.log(answer)
+           navigate ('/'+params.id)
+        }
+    }
 
 
 
@@ -55,12 +79,12 @@ function EditNote(props) {
  
         <div>
         <div class="form-floating" >
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" onChange={(e) => setNote({...note , Title : e.target.value})}></textarea>
+        <textarea class="form-control" value={note.Title} placeholder="Leave a comment here" id="floatingTextarea" onChange={(e) => setNote({...note , Title : e.target.value})}></textarea>
         <label for="floatingTextarea">Title</label>
         </div> <br/>
 
         <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" onChange={(e) => setNote({...note , Body : e.target.value})}></textarea>
+        <textarea class="form-control" value={note.Body} placeholder="Leave a comment here" id="floatingTextarea2" onChange={(e) => setNote({...note , Body : e.target.value})}></textarea>
         <label for="floatingTextarea2">Body</label>
         </div>
         <br/>
@@ -75,9 +99,10 @@ function EditNote(props) {
 
         <br/>
         <p class="card-text"><small class="text-muted">{today}</small></p>
-        <br/>
+        {floatHashtags}
+        <br/> <br/>
         <button type="button" class="btn btn-outline-danger" onClick={() => navigate ('/'+params.id)}>cancel</button> &nbsp; &nbsp;
-        {/* <button type="button" class="btn btn-outline-success" onClick={() => save()}>Save</button> */}
+        <button type="button" class="btn btn-outline-success" onClick={() => update()}>Update</button>
 
 
         </div>
