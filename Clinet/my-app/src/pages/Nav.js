@@ -21,7 +21,7 @@ function Nav(props) {
                  <div class="container-fluid">
                     <a class="navbar-brand">
                     <img src={write} alt="" width="45" height="36" class="d-inline-block align-text-top"/> &nbsp;
-                    Keep Sheets
+                    Keep 
                     </a>
                  </div>
 
@@ -29,7 +29,7 @@ function Nav(props) {
 
                  <div class="container-fluid">
                       <form class="d-flex">
-                      <input class="form-control me-2" type="search" placeholder="Add Tag" aria-label="Search" onChange={(e)=> setTag(e.target.value)} />
+                      <input class="form-control me-2" type="search" placeholder="Serach Tag" aria-label="Search" onChange={(e)=> setTag(e.target.value)} />
                       <button type="button" class="btn btn-outline-primary" >Tag</button> &nbsp;
                       <button class="btn btn-outline-success" >Search</button>
                       </form>
