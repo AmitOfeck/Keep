@@ -12,15 +12,44 @@ function Note(props) {
     const params = useParams();
     const navigate = useNavigate();
 
+    const visionDate = (date) => {
+
+        var year = date.toString().substring(0,4)
+        var month = date.toString().substring(5,7)
+        var day = date.toString().substring(8,10)
+
+        var time = day+'/'+month+'/'+year
+        return time
+     }
+
     const checkDate = (date) => {
 
         var year = date.toString().substring(0,4)
         var month = date.toString().substring(5,7)
         var day = date.toString().substring(8,10)
 
-        var time = day+'-'+month+'-'+year
+        var time = month+'/'+day+'/'+year
         return time
      }
+
+     var today = new Date();
+     var dd = String(today.getDate()).padStart(2, '0');
+     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+     var yyyy = today.getFullYear();
+     today =  mm + '/' + dd + '/' + yyyy;
+
+
+     const checkTimeDifference = (start , end) => {
+        const date1 = new Date(start);
+        const date2 = new Date(end);
+        const oneDay = 1000 * 60 * 60 * 24;
+        const diffInTime = date2.getTime() - date1.getTime();
+        const diffInDays = Math.round(diffInTime / oneDay);
+        console.log(diffInDays);
+     }
+
+     const priority = checkTimeDifference(checkDate(props.data.createdDate) , today)
+
 
      var tagsIcons = props.data.Tags.map((tag , index) => {
          return ( <button key={index} type="button" class="btn btn-outline-secondary btn-sm">#{tag}</button> )
@@ -54,7 +83,7 @@ function Note(props) {
                     <div class="card-body">
                     <h5 class="card-title">{props.data.Title}</h5>
                     <p class="card-text"> {props.data.Body} </p>
-                    <p class="card-text"><small class="text-muted">{checkDate(props.data.createdDate)}</small></p>
+                    <p class="card-text"><small class="text-muted">{visionDate(props.data.createdDate)}</small></p>
                     </div>
                     </div>
                </div>
