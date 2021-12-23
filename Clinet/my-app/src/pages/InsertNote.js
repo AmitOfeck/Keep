@@ -9,21 +9,21 @@ import Utils from './Utils/Utils';
 function InsertNote(props) {
     const params = useParams();
     const navigate = useNavigate();
-
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = dd + '/' + mm + '/' + yyyy;
-    var today2 = mm + '/' + dd + '/' + yyyy;
-    today2 = new Date(today2);
+    
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const year = date.getFullYear();
+    const createdDate = day + '/' + month + '/' + year;
+    var today2 = month + '/' + day + '/' + year;
+    const createdDate2 = new Date(today2);
 
     const [note , setNote] = useState({
         UserId : params.id ,
         Title: "" ,
         Body: "",
         Tags : [] ,
-        createdDate : today2
+        createdDate : createdDate2
     })
     const [tag , setTag] = useState("")
 
@@ -86,7 +86,7 @@ function InsertNote(props) {
         }}>Tag</button>
 
         <br/>
-        <p class="card-text"><small class="text-muted">{today}</small></p>
+        <p class="card-text"><small class="text-muted">{createdDate}</small></p>
         <br/>
         <button type="button" class="btn btn-outline-danger" onClick={() => navigate ('/'+params.id)}>cancel</button> &nbsp; &nbsp;
         <button type="button" class="btn btn-outline-success" onClick={() => save()}>Save</button>

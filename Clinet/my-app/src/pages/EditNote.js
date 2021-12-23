@@ -4,23 +4,23 @@ import write from '../images/write.jpeg';
 import '../App.css';
 import Utils from './Utils/Utils';
 
-function EditNote(props) {
+function EditNote() {
 
     const params = useParams();
     const navigate = useNavigate();
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd;
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const year = date.getFullYear();
+    const createDate = year + '/' + month + '/' + day;
 
     const [note , setNote] = useState({
         UserId : params.id ,
         Title: "" ,
         Body: "",
         Tags : [] ,
-        createdDate : today
+        createdDate : createDate
     })
     const [tag , setTag] = useState("")
 
@@ -47,8 +47,7 @@ function EditNote(props) {
         }
         else
         {
-           var answer = await Utils.updateNote(params.id ,note._id ,  note)
-           console.log(answer)
+           await Utils.updateNote(params.id ,note._id ,  note)
            navigate ('/'+params.id)
         }
     }
@@ -90,7 +89,7 @@ function EditNote(props) {
         <br/>
 
         <input type="text" placeholder="Write Tag" value={tag} onChange={(e) => setTag(e.target.value)} /> &nbsp;
-        <button type="button" class="btn btn-outline-primary" onClick={() =>{
+        <button type="button" class="btn btn-outline-primary" onClick={() => {
          var arr = [...note.Tags]
          arr.push(tag)
          setNote({...note , Tags : arr})
@@ -98,7 +97,7 @@ function EditNote(props) {
         }}>Tag</button>
 
         <br/>
-        <p class="card-text"><small class="text-muted">{today}</small></p>
+        <p class="card-text"><small class="text-muted">{date}</small></p>
         {floatHashtags}
         <br/> <br/>
         <button type="button" class="btn btn-outline-danger" onClick={() => navigate ('/'+params.id)}>cancel</button> &nbsp; &nbsp;

@@ -34,11 +34,11 @@ const createNote =  async ( userId , newNote) => {
    
 }
 
-const updateNote =  async (userId , noteID , updatedNote) => {
+const updateNote =  async (userId , noteId , updatedNote) => {
 
     const noteToUpdate = new notesSchema({
 
-        _id : noteID ,
+        _id : noteId ,
         UserId: userId ,
         Title : updatedNote.Title ,
         Body : updatedNote.Body ,
@@ -46,14 +46,14 @@ const updateNote =  async (userId , noteID , updatedNote) => {
         createdDate : updatedNote.createdDate
     })
 
-    await notesSchema.findByIdAndUpdate(noteID , noteToUpdate)
+    await notesSchema.findByIdAndUpdate(noteId , noteToUpdate)
     return noteToUpdate._id
    
 }
 
-const deleteNote = async (noteID) => {
+const deleteNote = async (noteId) => {
 
-     await notesSchema.findByIdAndDelete(noteID)
+     await notesSchema.findByIdAndDelete(noteId)
      return "Note deleted successfully"
      
  }
