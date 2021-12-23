@@ -43,20 +43,20 @@ router.route('/:id').post(async (req, resp) => {
 })
 
 //Delete Note
-router.route('/:id/:noteID').delete(async (req , resp)=> {
+router.route('/:id/:noteId').delete(async (req , resp)=> {
     // var id = req.params.id;
-    const noteID = req.params.noteID; //id of the note
-    const deleteFromDB = await notesBL.deleteNote(noteID);
+    const noteId = req.params.noteId; //id of the note
+    const deleteFromDB = await notesBL.deleteNote(noteId);
 
     return resp.json(deleteFromDB);
 })
 
 //Update Note
-router.route('/:id/:noteID').put(async (req, resp) => {
+router.route('/:id/:noteId').put(async (req, resp) => {
     const updatedNote = req.body;
-    const userID = req.params.id; //id of the user
-    const noteID = req.params.noteID; //id of the note
-    const answer = await notesBL.updateNote(userID ,noteID , updatedNote);
+    const userId = req.params.id; //id of the user
+    const noteId = req.params.noteId; //id of the note
+    const answer = await notesBL.updateNote(userId ,noteId , updatedNote);
     return resp.json(answer);
 })
 
