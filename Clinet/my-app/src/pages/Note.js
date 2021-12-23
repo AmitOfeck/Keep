@@ -50,7 +50,6 @@ function Note(props) {
 
      var classTime = "";
      const num = checkTimeDifference(checkDate(props.data.createdDate) , today)
-     console.log(num)
      if (num < 7)
      classTime = "greenNote";
      else if (num > 7 && num <= 30)
@@ -61,7 +60,7 @@ function Note(props) {
      }
 
      var tagsIcons = props.data.Tags.map((tag , index) => {
-         return ( <button key={index} type="button" class="btn btn-outline-secondary btn-sm">#{tag}</button> )
+         return ( <button key={index} type="button" class="btn btn-outline-secondary btn-sm" id="black">#{tag}</button> )
      })
 
      const del = async (UserId , noteId) => {

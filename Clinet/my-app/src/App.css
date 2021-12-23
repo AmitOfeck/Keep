@@ -65,6 +65,7 @@
 #orderNotes{
   display: grid;
   grid-template-columns: 33% 33% 33%;
+  row-gap: 20px;
 }
 
 #green{
@@ -78,6 +79,12 @@
 
 #white{
   color:white;
+}
+
+#black{
+  border-style: solid;
+  border-color: black;
+  color:black;
 }
 
 #navBar2{
@@ -98,14 +105,20 @@
 
 .greenNote{
   background-color:rgb(155, 179, 155);
+  border-style: solid;
+  border-color: rgb(19, 99, 19);
 }
 
 .yellowNote{
   background-color:rgb(235, 235, 144);
+  border-style: solid;
+  border-color: rgb(154, 160, 73);
 }
 
 .redNote{
   background-color:rgb(230, 176, 176);
+  border-style: solid;
+  border-color: rgb(134, 24, 24);
 }
 
 

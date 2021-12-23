@@ -14,14 +14,16 @@ function InsertNote(props) {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd;
+    today = dd + '/' + mm + '/' + yyyy;
+    var today2 = mm + '/' + dd + '/' + yyyy;
+    today2 = new Date(today2);
 
     const [note , setNote] = useState({
         UserId : params.id ,
         Title: "" ,
         Body: "",
         Tags : [] ,
-        createdDate : today
+        createdDate : today2
     })
     const [tag , setTag] = useState("")
 
