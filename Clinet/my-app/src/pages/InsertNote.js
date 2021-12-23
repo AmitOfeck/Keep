@@ -10,26 +10,26 @@ function InsertNote(props) {
     const params = useParams();
     const navigate = useNavigate();
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = dd + '/' + mm + '/' + yyyy;
-    var today2 = mm + '/' + dd + '/' + yyyy;
-    today2 = new Date(today2);
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const createdDate = dd + '/' + mm + '/' + yyyy;
+    const today2 = mm + '/' + dd + '/' + yyyy;
+    const createdDate2 = new Date(today2);
 
     const [note , setNote] = useState({
         UserId : params.id ,
         Title: "" ,
         Body: "",
         Tags : [] ,
-        createdDate : today2
+        createdDate : createdDate2
     })
     const [tag , setTag] = useState("")
 
 
     const save = async () => {
-        if(note.Title == "" || note.Body == "" || note.Tags.length == 0)
+        if(note.Title === "" || note.Body === "" || note.Tags.length === 0)
         {
             alert("Mission information")
         }
@@ -86,7 +86,7 @@ function InsertNote(props) {
         }}>Tag</button>
 
         <br/>
-        <p class="card-text"><small class="text-muted">{today}</small></p>
+        <p class="card-text"><small class="text-muted">{createdDate}</small></p>
         <br/>
         <button type="button" class="btn btn-outline-danger" onClick={() => navigate ('/'+params.id)}>cancel</button> &nbsp; &nbsp;
         <button type="button" class="btn btn-outline-success" onClick={() => save()}>Save</button>

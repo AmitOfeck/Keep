@@ -9,18 +9,18 @@ function EditNote(props) {
     const params = useParams();
     const navigate = useNavigate();
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = yyyy + '/' + mm + '/' + dd;
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const createdDate = yyyy + '/' + mm + '/' + dd;
 
     const [note , setNote] = useState({
         UserId : params.id ,
         Title: "" ,
         Body: "",
         Tags : [] ,
-        createdDate : today
+        createdDate : createdDate
     })
     const [tag , setTag] = useState("")
 
@@ -98,7 +98,7 @@ function EditNote(props) {
         }}>Tag</button>
 
         <br/>
-        <p class="card-text"><small class="text-muted">{today}</small></p>
+        <p class="card-text"><small class="text-muted">{createdDate}</small></p>
         {floatHashtags}
         <br/> <br/>
         <button type="button" class="btn btn-outline-danger" onClick={() => navigate ('/'+params.id)}>cancel</button> &nbsp; &nbsp;
