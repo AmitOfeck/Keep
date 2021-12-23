@@ -11,7 +11,7 @@ Server was written with Express framework, using Mongo as db.
 Client was written with React
 
 ### Instructions
-First of all download mongo [link|https://docs.mongodb.com/v4.2/administration/install-community/]
+First of all download mongo [link](https://docs.mongodb.com/v4.2/administration/install-community)
 
 In order to run the project, please clone the repo and then run the following commands:
 
