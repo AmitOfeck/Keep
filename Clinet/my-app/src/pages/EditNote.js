@@ -4,9 +4,10 @@ import write from '../images/write.jpeg';
 import '../App.css';
 import Utils from './Utils/Utils';
 
+
 function EditNote(props) {
-†
-    const params = useParams();
+
+  const params = useParams();
     const navigate = useNavigate();
 
     const date = new Date();
