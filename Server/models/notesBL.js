@@ -5,23 +5,23 @@ const getAllNotes =  async () => {
     return await notesSchema.find()
 }
 
-const listNotes =  async (id) => {
-    return await notesSchema.find({UserId: id})
+const listNotes =  async (userId) => {
+    return await notesSchema.find({UserId: userId})
 }
 
 const noteByNoteId =  async (noteId) => {
     return await notesSchema.find({_id: noteId})
 }
 
-const getNotesByTags =  async (id , tags) => {
-    return await notesSchema.find({ UserId: id , Tags : {$in : tags} })
+const getNotesByTags =  async (userId , tags) => {
+    return await notesSchema.find({ UserId: userId , Tags : {$in : tags} })
 }
 
-const createNote =  async ( id , newNote) => {
+const createNote =  async ( userId , newNote) => {
     // console.log(newNote)
 
     const noteToAdd = new notesSchema({
-        UserId: id ,
+        UserId: userId ,
         Title : newNote.Title ,
         Body : newNote.Body ,
         Tags : newNote.Tags , 
@@ -34,12 +34,12 @@ const createNote =  async ( id , newNote) => {
    
 }
 
-const updateNote =  async (userID , noteID , updatedNote) => {
+const updateNote =  async (userId , noteID , updatedNote) => {
 
     const noteToUpdate = new notesSchema({
 
         _id : noteID ,
-        UserId: userID ,
+        UserId: userId ,
         Title : updatedNote.Title ,
         Body : updatedNote.Body ,
         Tags : updatedNote.Tags , 
