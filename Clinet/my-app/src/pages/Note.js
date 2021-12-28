@@ -4,6 +4,8 @@ import '../App.css';
 import deleteIcon from '../images/deleteIcon.jpeg';
 import editIcon from '../images/editIcon.jpeg';
 import Utils from './Utils/Utils';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 
 
 
@@ -50,7 +52,8 @@ function Note(props) {
 
      var classTime = "";
      const num = checkTimeDifference(checkDate(props.data.createdDate) , today)
-     if (num < 7)
+     console.log(num)
+     if (num <= 7)
      classTime = "greenNote";
      else if (num > 7 && num <= 30)
      classTime = "yellowNote";
@@ -78,9 +81,18 @@ function Note(props) {
                 <div class="row g-0" >
                 <div class="col-md-4">
                     <div >
+                    <Tooltip title="Delete">
+                    <IconButton>
+                    <img src={deleteIcon} width="20px" height="20px" onClick ={ () => del(props.data.UserId , props.data._id)}></img>
+                    </IconButton>
+                    </Tooltip>
+
+                    <Tooltip title="Edit">
+                    <IconButton>
+                    <img src={editIcon} width="18px" height="18px" onClick={() => navigate ('/'+params.id+'/Edit/'+props.data._id)}></img>                    </IconButton>
+                    </Tooltip>
                    
-                        <img src={deleteIcon} width="20px" height="20px" onClick ={ () => del(props.data.UserId , props.data._id)}></img>  &nbsp;&nbsp;
-                        <img src={editIcon} width="18px" height="18px" onClick={() => navigate ('/'+params.id+'/Edit/'+props.data._id)}></img>
+                        
                     </div>
                     <br/>
                     {tagsIcons}

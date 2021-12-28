@@ -6,6 +6,8 @@ import Note from './Note';
 import Utils from './Utils/Utils';
 
 
+
+
 function Main(props) {
     const params = useParams();
     const navigate = useNavigate();
@@ -59,7 +61,7 @@ function Main(props) {
           {stickyNotes}
            </div>
 
-     
+ 
 
         </div>
     );

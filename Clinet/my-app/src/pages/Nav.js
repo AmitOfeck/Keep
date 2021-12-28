@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate , useParams } from 'react-router-dom'
-
 import write from '../images/write.jpeg';
 // import plus from '../images/plus.jpeg';
 import '../App.css';
@@ -59,6 +58,7 @@ function Nav(props) {
                       <button type="button" class="btn btn-outline-success" onClick={search}>Serach</button>
                       </form>
                  </div>
+                 
                  <button type="button" class="btn btn-outline-light" id="plus" onClick={() => navigate ('/'+params.id+'/addNote')}>+</button> 
                  <div>
 
